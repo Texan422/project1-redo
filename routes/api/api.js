@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const {resolve} = require('path');
-const { AddItems, ReadItems, UpdateItems } = require('../../controllers/Items.js');
+const { AddItems, ReadItems, UpdateItems, DeleteItems } = require('../../controllers/Items.js');
 
 router.post('/:name', async (req, res) => {
     try {
@@ -21,14 +21,14 @@ router.get('/:name', async (req, res) => {
     }
 })
 
-// router.delete('/:name', async (req, res) => {
-//     try {
-//         await STWDelete(req.params.name);
-//         res.status(200).json({message: `${req.params.name} deleted`})
-//     } catch (err) {
-//         res.status(500).json({error: 'Unable to delete item'})
-//     }
-// })
+router.delete('/:name/:item', async (req, res) => {
+    try {
+        await DeleteItems(req.params.name, req.params.item);
+        res.status(200).json({message: `${req.params.item} deleted`})
+    } catch (err) {
+        res.status(500).json({error: 'Unable to delete item'})
+    }
+})
 
 router.put('/:name', async (req, res) => {
     try {

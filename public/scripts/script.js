@@ -1,4 +1,6 @@
 function deleteItem(event){
+    let arr = window.location.href.split('/')
+    const deleteLocation = arr[arr.length - 1]
     const xhr = new XMLHttpRequest();
     xhr.onload = function() {
         console.log(JSON.parse(xhr.response));
@@ -6,7 +8,7 @@ function deleteItem(event){
             event.target.parentNode.parentNode.removeChild(event.target.parentNode);
         }
     }
-    xhr.open('DELETE', `/Delete/${event.target.value}`);
+    xhr.open('DELETE', `/Delete/${deleteLocation}/${event.target.value}`);
     xhr.send();
 }
 

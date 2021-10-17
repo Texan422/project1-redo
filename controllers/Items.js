@@ -28,10 +28,10 @@ const ReadItems = async (Name) => {
     }
 }
 
-const DeleteItems = async (itemName) => {
+const DeleteItems = async (warehouseName, itemName) => {
     try {
         await mongoose.connect(process.env.ATLAS_URI);
-        await Item.Inv.deleteOne({itemName});
+        await Item.Inv.deleteOne({warehouseName, itemName});
         mongoose.connection.close();
         return;
     } catch (err) {
