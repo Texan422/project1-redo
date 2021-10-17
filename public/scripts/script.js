@@ -11,6 +11,8 @@ function deleteItem(event){
 }
 
 setTimeout(function getItems() {
+    let arr = window.location.href.split('/')
+    const read = arr[arr.length - 1]
     const xhr = new XMLHttpRequest();
     xhr.onload = function() { //callback function that will be called later
         const items = JSON.parse(xhr.response);
@@ -52,7 +54,7 @@ setTimeout(function getItems() {
             available.innerText = `${items.error}`;
         }
     }
-    xhr.open('GET', '/STWRead');
+    xhr.open('GET', `/inventory/${read}`);
     xhr.send();
 }, 800)
 

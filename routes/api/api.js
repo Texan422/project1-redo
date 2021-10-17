@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const {resolve} = require('path');
-const { AddItems } = require('../../controllers/Items.js');
+const { AddItems, ReadItems } = require('../../controllers/Items.js');
 
 router.post('/:name', async (req, res) => {
     try {
@@ -12,14 +12,14 @@ router.post('/:name', async (req, res) => {
     }
 })
 
-// router.get('/', async (req, res) => {
-//     try {
-//         const items = await STWRead();
-//         res.status(200).json(items);
-//     } catch (err) {
-//         res.status(500).json(err);
-//     }
-// })
+router.get('/:name', async (req, res) => {
+    try {
+        const items = await ReadItems(req.params.name);
+        res.status(200).json(items);
+    } catch (err) {
+        res.status(500).json(err);
+    }
+})
 
 // router.delete('/:name', async (req, res) => {
 //     try {

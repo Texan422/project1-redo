@@ -13,10 +13,12 @@ app.get('/', (req, res) => {
     res.sendFile(resolve('public', 'views', 'index.html'))
 })
 
-// routes to webpages
+// route to webpages
 app.use('/company', require('./routes/warehouses.js'))
-// routes to add
+// route to add
 app.use('/item', require('./routes/api/api.js'))
+//route to read
+app.use('/inventory', require('./routes/api/api.js'))
 
 
 app.listen(port, () => {
