@@ -19,6 +19,10 @@ app.use('/company', require('./routes/warehouses.js'))
 app.use('/item', require('./routes/api/api.js'))
 //route to read
 app.use('/inventory', require('./routes/api/api.js'))
+//route to delete
+app.use('/Delete', require('./routes/api/api.js'))
+//route to update
+app.use('/Update', require('./routes/api/api.js'))
 
 
 app.listen(port, () => {

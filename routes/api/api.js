@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const {resolve} = require('path');
-const { AddItems, ReadItems } = require('../../controllers/Items.js');
+const { AddItems, ReadItems, UpdateItems } = require('../../controllers/Items.js');
 
 router.post('/:name', async (req, res) => {
     try {
@@ -30,13 +30,13 @@ router.get('/:name', async (req, res) => {
 //     }
 // })
 
-// router.put('/:name', async (req, res) => {
-//     try {
-//         await STWUpdate(req.params.name);
-//         res.status(200).json({message: `item updated`})
-//     } catch (err) {
-//         res.status(500).json({error: 'Unable to update item'})
-//     }
-// })
+router.put('/:name', async (req, res) => {
+    try {
+        await UpdateItems(req.params.name);
+        res.status(200).json({message: `item updated`})
+    } catch (err) {
+        res.status(500).json({error: 'Unable to update item'})
+    }
+})
 
 module.exports = router;

@@ -28,7 +28,34 @@ const ReadItems = async (Name) => {
     }
 }
 
+const DeleteItems = async (itemName) => {
+    try {
+        await mongoose.connect(process.env.ATLAS_URI);
+        await Item.Inv.deleteOne({itemName});
+        mongoose.connection.close();
+        return;
+    } catch (err) {
+        mongoose.connection.close();
+        throw err;
+    }
+}
+
+const UpdateItems = async (param) => {
+    const updates = param.split(',');
+    try {
+        await mongoose.connect(process.env.ATLAS_URI);
+        await Item.Inv.updateOne({warehouseName: updates[0], itemName: updates[1]}, {itemName: updates[2], SKU: updates[3]});
+        mongoose.connection.close();
+        return;
+    } catch (err) {
+        mongoose.connection.close();
+        throw err;
+    }
+}
+
 module.exports = {
     AddItems,
-    ReadItems
+    ReadItems,
+    UpdateItems,
+    DeleteItems
 };

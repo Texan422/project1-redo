@@ -6,7 +6,7 @@ function deleteItem(event){
             event.target.parentNode.parentNode.removeChild(event.target.parentNode);
         }
     }
-    xhr.open('DELETE', `/STWDelete/${event.target.value}`);
+    xhr.open('DELETE', `/Delete/${event.target.value}`);
     xhr.send();
 }
 
@@ -80,15 +80,17 @@ function fields(e) {
 }
 
 function updateItem(e) {
+    let arr = window.location.href.split('/')
+    const updateLocation = arr[arr.length - 1]
     const xhr = new XMLHttpRequest();
     const input1 = document.getElementById('input1')
     const input2 = document.getElementById('input2')
     const oriName = e.target.value;
     const newName = input1.value;
     const newSku = input2.value;
-    const param = [oriName, newName, newSku]
+    const param = [updateLocation, oriName, newName, newSku]
     
-    xhr.open('PUT', `/STWUpdate/${param}`);
+    xhr.open('PUT', `/Update/${param}`);
     xhr.send();
 }
 
