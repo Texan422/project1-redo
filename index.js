@@ -15,6 +15,8 @@ app.get('/', (req, res) => {
 
 // routes to webpages
 app.use('/company', require('./routes/warehouses.js'))
+// routes to add
+app.use('/item', require('./routes/api/api.js'))
 
 
 app.listen(port, () => {

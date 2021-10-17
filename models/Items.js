@@ -1,9 +1,10 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const inventory = new Schema({
-    warehouse: {
-        Type: String},
+const InventorySchema = new Schema({
+    warehouseName: {
+        type: String,
+        required: true},
     itemName:{
         type: String,
         required: true},
@@ -13,8 +14,8 @@ const inventory = new Schema({
 
 });
 
-const inv = mongoose.model ('SNW Items', inventory);
+const Inv = mongoose.model ('Inventory', InventorySchema);
 
 module.exports = {
-    inv
+    Inv
 };
