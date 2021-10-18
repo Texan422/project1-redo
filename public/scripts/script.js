@@ -24,6 +24,11 @@ setTimeout(function getItems() {
         let count = 0;
         if (xhr.status === 200){
             //unpack data
+            /**
+             * If displaying only 15 items at a time
+             * Break at 15, don't iterate more than you have to
+             * Condense into one for loop
+             */
             for(item of items){
                 count++
                 if (count === 15){
@@ -41,13 +46,15 @@ setTimeout(function getItems() {
                 const Deletebutton = document.createElement('button')
                 Deletebutton.value = item.itemName;
                 Deletebutton.innerText = 'Delete'
+                Deletebutton.className = 'btn btn-secondary'
                 Deletebutton.onclick = deleteItem;
-                div.append(Deletebutton);
                 const Updatebutton = document.createElement('button')
                 Updatebutton.innerText = 'Edit'
                 Updatebutton.value = item.itemName;
+                Updatebutton.className = 'btn btn-secondary'
                 Updatebutton.onclick = fields;
                 div.append(Updatebutton);
+                div.append(Deletebutton);
                 itemContainer.append(div);
                 div.append(form);
             }
@@ -61,6 +68,9 @@ setTimeout(function getItems() {
 }, 800)
 
 function fields(e) {
+    const arr = e.target.parentNode.innerText.split(' ')
+    let value2 = arr[arr.length-1]
+    value2 = value2.split('\n')
     const formContainer = document.getElementById(e.target.value);
     const input1 = document.createElement('input');
     input1.id = 'input1'
@@ -75,6 +85,9 @@ function fields(e) {
     const submitButton = document.createElement('button')
     submitButton.innerText = 'submit'
     submitButton.value = e.target.value;
+    submitButton.className = 'btn btn-danger'
+    input1.value = e.target.value
+    input2.value = value2[0]
     formContainer.append(input1);
     formContainer.append(input2);
     formContainer.append(submitButton);

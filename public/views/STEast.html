@@ -22,9 +22,9 @@
     <div id="capacity">Please fill in fields to add items</div>
     <form method="POST" action="/item/STEast" class="needs-validation">
         <div>
-        Item Name: <input type="text" name="itemName" required>
+        Item Name: <input type="text" name="itemName" required maxlength="20">
         SKU: <input type="text" name="SKU" required maxlength="15" placeholder="Ex. Z912E47">
-        <input type="submit" id="subButton">
+        <input type="submit" id="subButton" class="btn btn-secondary">
     </div>
     </form>
 
