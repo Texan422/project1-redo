@@ -24,19 +24,14 @@ setTimeout(function getItems() {
         let count = 0;
         if (xhr.status === 200){
             //unpack data
-            /**
-             * If displaying only 15 items at a time
-             * Break at 15, don't iterate more than you have to
-             * Condense into one for loop
-             */
-            for(item of items){
-                count++
-                if (count === 15){
-                    const disableButton = document.getElementById('subButton')
-                    disableButton.remove()
-                    capacity.innerText = 'MAX CAPACITY REACHED PLEASE DELETE ITEMS'
-                }
-            }
+            // for(item of items){
+            //     count++
+            //     if (count === 15){
+            //         const disableButton = document.getElementById('subButton')
+            //         disableButton.remove()
+            //         capacity.innerText = 'MAX CAPACITY REACHED PLEASE DELETE ITEMS'
+            //     }
+            // }
             for(item of items){
                 const div = document.createElement('div');
                 div.innerText = `\nItem Name: ${item.itemName}\n SKU: ${item.SKU}\n`
@@ -46,7 +41,7 @@ setTimeout(function getItems() {
                 const Deletebutton = document.createElement('button')
                 Deletebutton.value = item.itemName;
                 Deletebutton.innerText = 'Delete'
-                Deletebutton.className = 'btn btn-secondary'
+                Deletebutton.className = 'btn btn-danger'
                 Deletebutton.onclick = deleteItem;
                 const Updatebutton = document.createElement('button')
                 Updatebutton.innerText = 'Edit'
@@ -57,6 +52,13 @@ setTimeout(function getItems() {
                 div.append(Deletebutton);
                 itemContainer.append(div);
                 div.append(form);
+                count++
+                if (count === 15){
+                    const disableButton = document.getElementById('subButton')
+                    disableButton.remove()
+                    capacity.className = 'red'
+                    capacity.innerText = 'MAX CAPACITY REACHED PLEASE DELETE ITEMS'
+                }
             }
         }else{
             //handles error
@@ -85,7 +87,7 @@ function fields(e) {
     const submitButton = document.createElement('button')
     submitButton.innerText = 'submit'
     submitButton.value = e.target.value;
-    submitButton.className = 'btn btn-danger'
+    submitButton.className = 'btn btn-warning'
     input1.value = e.target.value
     input2.value = value2[0]
     formContainer.append(input1);
