@@ -62,6 +62,7 @@ setTimeout(function getItems() {
 }, 800)
 
 function fields(e) {
+    e.target.disabled = true
     const arr = e.target.parentNode.innerText.split(' ')
     let value2 = arr[arr.length-1]
     value2 = value2.split('\n')
