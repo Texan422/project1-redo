@@ -18,11 +18,11 @@ app.use('/company', require('./routes/warehouses.js'))
 // route to add
 app.use('/item', require('./routes/api/api.js'))
 //route to read
-app.use('/inventory', require('./routes/api/api.js'))
+app.use('/Inventory', require('./routes/api/api.js'))
 //route to delete
-app.use('/Delete', require('./routes/api/api.js'))
+app.use('/Inventory/Del', require('./routes/api/api.js'))
 //route to update
-app.use('/Update', require('./routes/api/api.js'))
+app.use('/Inventory/Up', require('./routes/api/api.js'))
 
 
 app.listen(port, () => {

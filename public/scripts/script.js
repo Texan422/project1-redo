@@ -8,7 +8,7 @@ function deleteItem(event){
             event.target.parentNode.parentNode.removeChild(event.target.parentNode);
         }
     }
-    xhr.open('DELETE', `/Delete/${deleteLocation}/${event.target.value}`);
+    xhr.open('DELETE', `/Inventory/Del/${deleteLocation}/${event.target.value}`);
     xhr.send();
 }
 
@@ -24,14 +24,6 @@ setTimeout(function getItems() {
         let count = 0;
         if (xhr.status === 200){
             //unpack data
-            // for(item of items){
-            //     count++
-            //     if (count === 15){
-            //         const disableButton = document.getElementById('subButton')
-            //         disableButton.remove()
-            //         capacity.innerText = 'MAX CAPACITY REACHED PLEASE DELETE ITEMS'
-            //     }
-            // }
             for(item of items){
                 const div = document.createElement('div');
                 div.innerText = `\nItem Name: ${item.itemName}\n SKU: ${item.SKU}\n`
@@ -65,7 +57,7 @@ setTimeout(function getItems() {
             available.innerText = `${items.error}`;
         }
     }
-    xhr.open('GET', `/inventory/${read}`);
+    xhr.open('GET', `/Inventory/${read}`);
     xhr.send();
 }, 800)
 
@@ -107,7 +99,7 @@ function updateItem(e) {
     const newSku = input2.value;
     const param = [updateLocation, oriName, newName, newSku]
     
-    xhr.open('PUT', `/Update/${param}`);
+    xhr.open('PUT', `/Inventory/Up/${param}`);
     xhr.send();
 }
 

@@ -1,3 +1,22 @@
-.red{
-    color: red;
+.main{
+    text-align: center;
+}
+
+.title{
+    font-family: arial;
+    font-size: xx-large;
+}
+
+.subComp{
+    font-family: arial;
+    font-size: x-large;
+}
+
+.img{
+    max-width: 60%;
+}
+
+.links{
+    color: white;
+    font-family: arial;
 }
